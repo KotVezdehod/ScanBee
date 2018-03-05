@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ScanBee.App">
+    <Application.Resources>
+        <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Color x:Key="textColor">#FFFFFF</Color>
+            <Color x:Key="backColor">#000000</Color>
+            <x:String x:Key="fontSize">Large</x:String>
+            <x:String x:Key="lvGoodsFontSize">12</x:String>
+            <x:String x:Key="lvGoodsFontSize_Big">16</x:String>
+            <x:String x:Key="lvFontSize">Small</x:String>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

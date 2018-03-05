@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ScanBee.Page_GoodsList"
+             xmlns:local="clr-namespace:ScanBee;assembly=ScanBee"
+             Title="Документы">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="lv_GoodName_col_width">*</x:String>
+            <x:String x:Key="lv_UnitName_col_width">*</x:String>
+            <x:String x:Key="lv_GoodDescription_col_width">*</x:String>
+            <x:String x:Key="lv_GoodSerial_col_width">*</x:String>
+            <x:String x:Key="lv_GoodQuality_col_width">*</x:String>
+            <x:String x:Key="lv_GoodAmount_col_width">*</x:String>
+            <x:String x:Key="lv_GoodAmountAquired_col_width">*</x:String>
+            <x:String x:Key="lv_Value0_col_width">*</x:String>
+            <x:String x:Key="lv_Value1_col_width">*</x:String>
+            <x:String x:Key="lv_Value2_col_width">*</x:String>
+
+            <x:Boolean x:Key="lv_GoodName_IsVivsible">True</x:Boolean>
+            <x:Boolean x:Key="lv_UnitName_IsVivsible">True</x:Boolean>
+            <x:Boolean x:Key="lv_GoodDescription_IsVivsible">True</x:Boolean>
+            <x:Boolean x:Key="lv_GoodSerial_IsVivsible">True</x:Boolean>
+            <x:Boolean x:Key="lv_GoodQuality_IsVivsible">True</x:Boolean>
+            <x:Boolean x:Key="lv_GoodAmountAquired_IsVivsible">True</x:Boolean>
+            <x:Boolean x:Key="lv_GoodAmount_IsVivsible">True</x:Boolean>
+            <x:Boolean x:Key="lv_Value0_IsVivsible">False</x:Boolean>
+            <x:Boolean x:Key="lv_Value1_IsVivsible">False</x:Boolean>
+            <x:Boolean x:Key="lv_Value2_IsVivsible">False</x:Boolean>
+
+            <x:Boolean x:Key="btn_Scan_IsVivsible">False</x:Boolean>
+
+            <local:myNumericColorConverter x:Key="myNumericColorConverter"/>
+            <local:Enlight_Color_Converter x:Key="Enlight_Color_Converter"/>
+            
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout BackgroundColor="{StaticResource Key=backColor}" x:Name="Page_GoodList_StackLayout"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand">
+        <ListView 
+            x:Name="GoodList" 
+            SeparatorColor="White" 
+            SeparatorVisibility="Default"
+            ItemsSource="{Binding lv_Goods}"
+            ItemSelected="GoodList_ItemSelected"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource Key=textColor}">
+                                <local:Grid_GoodPage ColumnSpacing="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <local:Grid_GoodPage.ColumnDefinitions>
+                                        <ColumnDefinition Width="{StaticResource Key=lv_GoodName_col_width}" />
+                                        <ColumnDefinition Width="{StaticResource Key=lv_UnitName_col_width}" />
+                                        <ColumnDefinition Width="{StaticResource Key=lv_GoodDescription_col_width}"/>
+                                        <ColumnDefinition Width="{StaticResource Key=lv_GoodSerial_col_width}" />
+                                        <ColumnDefinition Width="{StaticResource Key=lv_GoodQuality_col_width}"/>
+                                        <ColumnDefinition Width="{StaticResource Key=lv_GoodAmount_col_width}" />
+                                        <ColumnDefinition Width="{StaticResource Key=lv_GoodAmountAquired_col_width}" />
+                                        <ColumnDefinition Width="{StaticResource Key=lv_Value0_col_width}"/>
+                                        <ColumnDefinition Width="{StaticResource Key=lv_Value1_col_width}" />
+                                        <ColumnDefinition Width="{StaticResource Key=lv_Value2_col_width}"/>
+                                    </local:Grid_GoodPage.ColumnDefinitions>
+                                    <local:Grid_GoodPage.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </local:Grid_GoodPage.RowDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Start"
+                                        FontSize="{StaticResource Key=lvGoodsFontSize_Big}" 
+                                        BackgroundColor="{Binding LocalFilter, Converter= {StaticResource Enlight_Color_Converter}}"
+                                        TextColor="{StaticResource Key=textColor}"
+                                        Text="{Binding nGood}"
+                                        IsVisible="{DynamicResource Key=lv_GoodName_IsVivsible}"></Label>
+                                    <Label
+                                        Grid.Column="1"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="{StaticResource Key=lvGoodsFontSize}" 
+                                        BackgroundColor="{StaticResource Key=backColor}"
+                                        TextColor="{StaticResource Key=textColor}"
+                                        Text="{Binding nUnit}"
+                                        IsVisible="{DynamicResource Key=lv_UnitName_IsVivsible}"></Label>
+                                    <Label
+                                        Grid.Column="2"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="{StaticResource Key=lvGoodsFontSize}" 
+                                        BackgroundColor="{StaticResource Key=backColor}"
+                                        TextColor="{StaticResource Key=textColor}"
+                                        Text="{Binding nGoodDescription}"
+                                        IsVisible="{DynamicResource Key=lv_GoodDescription_IsVivsible}"></Label>
+                                    <Label
+                                        Grid.Column="3"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="{StaticResource Key=lvGoodsFontSize}" 
+                                        BackgroundColor="{StaticResource Key=backColor}"
+                                        TextColor="{StaticResource Key=textColor}"
+                                        Text="{Binding nSerial}"
+                                        IsVisible="{DynamicResource Key=lv_GoodSerial_IsVivsible}"></Label>
+                                    <Label
+                                        Grid.Column="4"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="{StaticResource Key=lvGoodsFontSize}" 
+                                        BackgroundColor="{StaticResource Key=backColor}"
+                                        TextColor="{StaticResource Key=textColor}"
+                                        Text="{Binding nQuality}"
+                                        IsVisible="{DynamicResource Key=lv_GoodQuality_IsVivsible}"></Label>
+                                    <Label
+                                        Grid.Column="5"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="{StaticResource Key=lvGoodsFontSize_Big}" 
+                                        BackgroundColor="{StaticResource Key=backColor}"
+                                        TextColor="{StaticResource Key=textColor}"
+                                        Text="{Binding Amount}"
+                                        IsVisible="{DynamicResource Key=lv_GoodAmount_IsVivsible}"></Label>
+                                    <Label
+                                        x:Name="Label_GoodAmountAquired"
+                                        Grid.Column="6"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="{StaticResource Key=lvGoodsFontSize_Big}" 
+                                        BackgroundColor="{Binding Amount_Equal_AmountEquired, Converter= {StaticResource myNumericColorConverter}}"
+                                        Text="{Binding AmountAquired}"
+                                        TextColor="{StaticResource Key=textColor}"
+                                        IsVisible="{DynamicResource Key=lv_GoodAmountAquired_IsVivsible}"></Label>
+                                    <Label
+                                        Grid.Column="7"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="{StaticResource Key=lvGoodsFontSize}" 
+                                        BackgroundColor="{StaticResource Key=backColor}"
+                                        TextColor="{StaticResource Key=textColor}"
+                                        Text="{Binding Value0}"
+                                        IsVisible="{DynamicResource Key=lv_Value0_IsVivsible}"></Label>
+                                    <Label
+                                        Grid.Column="8"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="{StaticResource Key=lvGoodsFontSize}" 
+                                        BackgroundColor="{StaticResource Key=backColor}"
+                                        TextColor="{StaticResource Key=textColor}"
+                                        Text="{Binding Value1}"
+                                        IsVisible="{DynamicResource Key=lv_Value1_IsVivsible}"></Label>
+                                    <Label
+                                        Grid.Column="9"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="{StaticResource Key=lvGoodsFontSize}" 
+                                        BackgroundColor="{StaticResource Key=backColor}"
+                                        TextColor="{StaticResource Key=textColor}"
+                                        Text="{Binding Value2}"
+                                        IsVisible="{DynamicResource Key=lv_Value2_IsVivsible}"></Label>
+                                </local:Grid_GoodPage>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button
+            x:Name="Page_GoodList_Scan"
+            Text="Сканировать"
+            TextColor="Black"
+            VerticalOptions="End"
+            HorizontalOptions="FillAndExpand"
+            IsVisible="{DynamicResource Key=btn_Scan_IsVivsible}"
+            Clicked="Page_GoodList_Scan_Clicked">
+        </Button>
+        <Button
+            Text="Ok"
+            BackgroundColor="Red"
+            VerticalOptions="End"
+            HorizontalOptions="FillAndExpand"
+            TextColor="Black"
+            Clicked="Button_Clicked_Ok">
+        </Button>
+    
+    </StackLayout>
+
+
+</ContentPage>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ScanBee"
+             x:Class="ScanBee.MainPage"
+             Title="Документы">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="lv_DocNumber_col_width">0</x:String>
+            <x:String x:Key="lv_DocData_col_width">0</x:String>
+            <x:String x:Key="lv_DocValue0_col_width">0</x:String>
+            <x:String x:Key="lv_DocValue1_col_width">0</x:String>
+            <x:String x:Key="lv_DocValue2_col_width">0</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout BackgroundColor="{StaticResource Key=backColor}" x:Name="MainPageStackLayout">
+        <ListView x:Name="Documents" SeparatorColor="White" SeparatorVisibility="Default" ItemSelected="Documents_ItemSelected" ItemsSource="{Binding}}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Key=backColor}">
+                                <Grid x:Name="lv_Documents_Grid"
+                                    ColumnSpacing="1"
+                                    BackgroundColor="{StaticResource Key=textColor}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="{StaticResource Key=lv_DocNumber_col_width}" />
+                                        <ColumnDefinition Width="{StaticResource Key=lv_DocData_col_width}"/>
+                                        <ColumnDefinition Width="{StaticResource Key=lv_DocValue0_col_width}"/>
+                                        <ColumnDefinition Width="{StaticResource Key=lv_DocValue1_col_width}"/>
+                                        <ColumnDefinition Width="{StaticResource Key=lv_DocValue2_col_width}"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Start"
+                                            FontSize="{StaticResource Key=lvFontSize}" 
+                                            BackgroundColor="{StaticResource Key=backColor}"
+                                            TextColor="{StaticResource Key=textColor}" 
+                                            Text="{Binding Number}"
+                                            Grid.Column="0"/>
+                                    <Label
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Start"
+                                            FontSize="{StaticResource Key=lvFontSize}" 
+                                            BackgroundColor="{StaticResource Key=backColor}"
+                                            TextColor="{StaticResource Key=textColor}" 
+                                            Text="{Binding Date}"
+                                            Grid.Column="1"/>
+                                    <Label
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Start"
+                                            FontSize="{StaticResource Key=lvFontSize}" 
+                                            BackgroundColor="{StaticResource Key=backColor}"
+                                            TextColor="{StaticResource Key=textColor}" 
+                                            Text="{Binding Value0}"
+                                            Grid.Column="2"/>
+                                    <Label
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Start"
+                                            FontSize="{StaticResource Key=lvFontSize}" 
+                                            BackgroundColor="{StaticResource Key=backColor}"
+                                            TextColor="{StaticResource Key=textColor}" 
+                                            Text="{Binding Value1}"
+                                            Grid.Column="3"/>
+                                    <Label
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Start"
+                                            FontSize="{StaticResource Key=lvFontSize}" 
+                                            BackgroundColor="{StaticResource Key=backColor}"
+                                            TextColor="{StaticResource Key=textColor}" 
+                                            Text="{Binding Value2}"
+                                            Grid.Column="4"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

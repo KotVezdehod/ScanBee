@@ -1,0 +1,997 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ScanBee.Page_Settings"
+             xmlns:local="clr-namespace:ScanBee">
+    <StackLayout x:Name="MainStack">
+        <StackLayout.Resources>
+            <ResourceDictionary>
+                <x:Boolean x:Key="sw_IsTorch_Enabled">False</x:Boolean>
+                <x:String x:Key="CommonTextColor">Gray</x:String>
+                <x:String x:Key="CommonPlaceholderColor">Gray</x:String>
+                <x:Int32 x:Key="CommonPadding">10</x:Int32>
+            </ResourceDictionary>
+        </StackLayout.Resources>
+        <local:rendering_SettingsPageMain_TableView Intent="Form" x:Name="TabView_0" BackgroundColor="Black">
+            <TableView.Root>
+                <TableRoot>
+                    <TableSection Title="Прочее" x:Name="TabSel_Other">
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="8*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="TabSel_Other_Label_DeviceID" Grid.Column="0" Text="ИД устр-ва" TextColor="Gray"></Label>
+                                <Entry x:Name="TabSel_Other_Entry_DeviceID"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_TabSel_Other_DeviceID}" Keyboard="Default"  
+                                           Placeholder="ИД устр-ва"
+                                           PlaceholderColor="Gray"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="TabSel_Other_Label_CheckForBarcodeUniqueness" Grid.Column="0" Text="Проверять штрихкоды на уникальность" TextColor="Gray"></Label>
+                                <Switch x:Name="TabSel_Other_Switch_CheckForBarcodeUniqueness" Grid.Column="1"  IsToggled="{Binding Path=ext_TabSel_Other_CheckForBarcodeUniqueness}"></Switch>
+                            </Grid>
+                        </ViewCell>
+
+                        <!--<ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="TabSel_Other_Label_ShowCharacteristic" Grid.Column="0" Text="Хар-ки ТМЦ" TextColor="Gray"></Label>
+                                <Switch x:Name="TabSel_Other_Switch_ShowCharacteristic" Grid.Column="1"  IsToggled="{Binding Path=ext_TabSel_Other_ShowCharacteristic}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="TabSel_Other_Label_ShowSerial" Grid.Column="0" Text="Серия ТМЦ" TextColor="Gray"></Label>
+                                <Switch x:Name="TabSel_Other_Switch_ShowSerial" Grid.Column="1"  IsToggled="{Binding Path=ext_TabSel_Other_ShowSerial}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="TabSel_Other_Label_ShowValues" Grid.Column="0" Text="Доп. ТМЦ" TextColor="Gray"></Label>
+                                <Switch x:Name="TabSel_Other_Switch_ShowValues" Grid.Column="1"  IsToggled="{Binding Path=ext_TabSel_Other_ShowValues}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="TabSel_Other_Label_ShowDocValue0" Grid.Column="0" Text="Доп. док-ты 0" TextColor="Gray"></Label>
+                                <Switch x:Name="TabSel_Other_Switch_ShowDocValue0" Grid.Column="1"  IsToggled="{Binding Path=ext_TabSel_Other_ShowDocValue0}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="TabSel_Other_Label_ShowDocValue1" Grid.Column="0" Text="Доп. док-ты 1" TextColor="Gray"></Label>
+                                <Switch x:Name="TabSel_Other_Switch_ShowDocValue1" Grid.Column="1"  IsToggled="{Binding Path=ext_TabSel_Other_ShowDocValue1}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="TabSel_Other_Label_ShowDocValue2" Grid.Column="0" Text="Доп. док-ты 2" TextColor="Gray"></Label>
+                                <Switch x:Name="TabSel_Other_Switch_ShowDocValue2" Grid.Column="1"  IsToggled="{Binding Path=ext_TabSel_Other_ShowDocValue2}"></Switch>
+                            </Grid>
+                        </ViewCell>-->
+                    </TableSection>
+                    <TableSection Title="Настройки списка товаров" x:Name="TabSel_GoodListView">
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodName_IsVivsible" Grid.Column="0" Text="Видно имя ТМЦ" TextColor="Gray"></Label>
+                                <Switch x:Name="GoodListView_Switch_GoodName_IsVivsible" Grid.Column="1"  IsToggled="{Binding Path=ext_GoodListView_GoodName_IsVivsible}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_UnitName_IsVivsible" Grid.Column="0" Text="Видно единицу" TextColor="Gray"></Label>
+                                <Switch x:Name="GoodListView_Switch_UnitName_IsVivsible" Grid.Column="1"  IsToggled="{Binding Path=ext_GoodListView_UnitName_IsVivsible}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodDescription_IsVivsible" Grid.Column="0" Text="Видно хар-ку" TextColor="Gray"></Label>
+                                <Switch x:Name="GoodListView_Switch_GoodDescription_IsVivsible" Grid.Column="1"  IsToggled="{Binding Path=ext_GoodListView_GoodDescription_IsVivsible}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodSerial_IsVivsible" Grid.Column="0" Text="Видно с/н" TextColor="Gray"></Label>
+                                <Switch x:Name="GoodListView_Switch_GoodSerial_IsVivsible" Grid.Column="1"  IsToggled="{Binding Path=ext_GoodListView_GoodSerial_IsVivsible}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodQuality_IsVivsible" Grid.Column="0" Text="Видно качество" TextColor="Gray"></Label>
+                                <Switch x:Name="GoodListView_Switch_GoodQuality_IsVivsible" Grid.Column="1"  IsToggled="{Binding Path=ext_GoodListView_GoodQuality_IsVivsible}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodAmount_IsVivsible" Grid.Column="0" Text="Видно количество" TextColor="Gray"></Label>
+                                <Switch x:Name="GoodListView_Switch_GoodAmount_IsVivsible" Grid.Column="1"  IsToggled="{Binding Path=ext_GoodListView_GoodAmount_IsVivsible}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodAmountAquired_IsVivsible" Grid.Column="0" Text="Видно количество набрано" TextColor="Gray"></Label>
+                                <Switch x:Name="GoodListView_Switch_GoodAmountAquired_IsVivsible" Grid.Column="1"  IsToggled="{Binding Path=ext_GoodListView_GoodAmountAquired_IsVivsible}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_Value0_IsVivsible" Grid.Column="0" Text="Видно доп. 0" TextColor="Gray"></Label>
+                                <Switch x:Name="GoodListView_Switch_Value0_IsVivsible" Grid.Column="1"  IsToggled="{Binding Path=ext_GoodListView_Value0_IsVivsible}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_Value1_IsVivsible" Grid.Column="0" Text="Видно доп. 1" TextColor="Gray"></Label>
+                                <Switch x:Name="GoodListView_Switch_Value1_IsVivsible" Grid.Column="1"  IsToggled="{Binding Path=ext_GoodListView_Value1_IsVivsible}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_Value2_IsVivsible" Grid.Column="0" Text="Видно доп. 2" TextColor="Gray"></Label>
+                                <Switch x:Name="GoodListView_Switch_Value2_IsVivsible" Grid.Column="1"  IsToggled="{Binding Path=ext_GoodListView_Value2_IsVivsible}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                        
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodName_Width" Grid.Column="0" Text="Ширина имени" TextColor="Gray"></Label>
+                                <Entry x:Name="GoodListView_Entry_GoodName_Width"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_GoodListView_GoodName_Width}" Keyboard="Default"  Placeholder="80" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_UnitName_Width" Grid.Column="0" Text="Ширина ед." TextColor="Gray"></Label>
+                                <Entry x:Name="GoodListView_Entry_UnitName_Width"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_GoodListView_UnitName_Width}" Keyboard="Default"  Placeholder="80" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodDescription_Width" Grid.Column="0" Text="Ширина хар-ки" TextColor="Gray"></Label>
+                                <Entry x:Name="GoodListView_Entry_GoodDescription_Width"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_GoodListView_GoodDescription_Width}" Keyboard="Default"  Placeholder="80" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodSerial_Width" Grid.Column="0" Text="Ширина с/н" TextColor="Gray"></Label>
+                                <Entry x:Name="GoodListView_Entry_GoodSerial_Width"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_GoodListView_GoodSerial_Width}" Keyboard="Default"  Placeholder="80" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodQuality_Width" Grid.Column="0" Text="Ширина кач." TextColor="Gray"></Label>
+                                <Entry x:Name="GoodListView_Entry_GoodQuality_Width"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_GoodListView_GoodQuality_Width}" Keyboard="Default"  Placeholder="80" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodAmount_Width" Grid.Column="0" Text="Ширина кол." TextColor="Gray"></Label>
+                                <Entry x:Name="GoodListView_Entry_GoodAmount_Width"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_GoodListView_GoodAmount_Width}" Keyboard="Default"  Placeholder="80" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_GoodAmountAquired_Width" Grid.Column="0" Text="Ширина кол. набрано" TextColor="Gray"></Label>
+                                <Entry x:Name="GoodListView_Entry_GoodAmountAquired_Width"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_GoodListView_GoodAmountAquired_Width}" Keyboard="Default"  Placeholder="80" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_Value0_Width" Grid.Column="0" Text="Ширина доп. знач. 0" TextColor="Gray"></Label>
+                                <Entry x:Name="GoodListView_Entry_Value0_Width"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_GoodListView_Value0_Width}" Keyboard="Default"  Placeholder="80" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_Value1_Width" Grid.Column="0" Text="Ширина доп. знач. 1" TextColor="Gray"></Label>
+                                <Entry x:Name="GoodListView_Entry_Value1_Width"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_GoodListView_Value1_Width}" Keyboard="Default"  Placeholder="80" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="GoodListView_Label_Value2_Width" Grid.Column="0" Text="Ширина доп. знач. 2" TextColor="Gray"></Label>
+                                <Entry x:Name="GoodListView_Entry_Value2_Width"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_GoodListView_Value2_Width}" Keyboard="Default"  Placeholder="80" />
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Подключение" x:Name="TabSel_Connection">
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="Address_Label" Grid.Column="0" Text="Адрес сервиса" TextColor="Gray"></Label>
+                                    <Entry x:Name="Address"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_Address}" Keyboard="Default"  
+                                           Placeholder="http://127.0.0.1:80/Warehouse/hs/Warehouse_1_0"
+                                           PlaceholderColor="Gray"/>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*" />
+                                        <ColumnDefinition Width="6*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label IsVisible="False" x:Name="UpdateService_Label" Grid.Column="0" Text="Адрес сервиса обновлений" TextColor="Gray"></Label>
+                                    <Entry IsVisible="False" x:Name="UpdateService"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_UpdateService}" Keyboard="Default"
+                                           Placeholder="http://127.0.0.1:80/UpdateSecurity/hs/UpdateSecurity_1_0"
+                                           PlaceholderColor="Gray"/>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="8*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="login_Label" Grid.Column="0" Text="Login" TextColor="Gray"></Label>
+                                    <Entry x:Name="login" Grid.Column="1" Text="{Binding Path=ext_Login}" TextColor="{DynamicResource Key=CommonTextColor}" Placeholder="login" PlaceholderColor="{DynamicResource Key=CommonPlaceholderColor}" ></Entry>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="8*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="password_Label" Grid.Column="0" Text="Password" TextColor="Gray"></Label>
+                                    <Entry x:Name="password" Grid.Column="1" IsPassword="True" Text="{Binding Path=ext_Password}" TextColor="{DynamicResource Key=CommonTextColor}" Placeholder="password" PlaceholderColor="{DynamicResource Key=CommonPlaceholderColor}"></Entry>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="8*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="supervisorpassword_Label" Grid.Column="0" Text="Supervisor Password" TextColor="Gray"></Label>
+                                    <Entry x:Name="supervisorpassword" Grid.Column="1" IsPassword="True" Text="{Binding Path=ext_SupervisorPassword}" TextColor="{DynamicResource Key=CommonTextColor}" Placeholder="password" PlaceholderColor="{DynamicResource Key=CommonPlaceholderColor}"></Entry>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="8*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="Timeout_Label" Grid.Column="0" Text="Timeout (сек.)" TextColor="Gray"></Label>
+                                    <Entry x:Name="Timeout"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_Timeout}" Keyboard="Default"  Placeholder="10" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Сканирование" x:Name="TabSel_Scanning">
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label TextColor="White" Text="Тип сканера: " Grid.Column="0"></Label>
+                                    <Picker TextColor="White" Grid.Column="1" x:Name="picker_ScanHardware" SelectedIndexChanged="picker_ScanHardware_SelectedIndexChanged">
+                                        <Picker.Items>
+                                            <x:String>Laser</x:String>
+                                            <x:String>Camera</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label TextColor="White" Text="Фильтр броадкаста лазера: " Grid.Column="0"></Label>
+                                    <Entry x:Name="IntentFilter"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_IntentFilter}" Keyboard="Default"  Placeholder="scan.rcv.enter" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label TextColor="White" Text="Параметр броадкаста лазера: " Grid.Column="0"></Label>
+                                    <Entry x:Name="IntentExtra"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_IntentExtra}" Keyboard="Default"  Placeholder="codestr" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="UseTorch_Label" Grid.Column="0" Text="Подсветка при сканировании" TextColor="Gray"></Label>
+                                    <Switch x:Name="UseTorch" Grid.Column="1" IsEnabled="{DynamicResource Key=sw_IsTorch_Enabled}" IsToggled="{Binding Path=ext_Torch}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="PureBarcode_Label" Grid.Column="0" Text="Чистый штрихкод" TextColor="Gray"></Label>
+                                    <Switch x:Name="PureBarcode" Grid.Column="1"  IsToggled="{Binding Path=ext_PureBarcode}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="UseNativeScanning_Label" Grid.Column="0" Text="Нативное сканирование" TextColor="Gray"></Label>
+                                    <Switch x:Name="UseNativeScanning" Grid.Column="1"  IsToggled="{Binding Path=ext_UseNativeScanning}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="TryHarder_Label" Grid.Column="0" Text="Усердно:)" TextColor="Gray"></Label>
+                                    <Switch x:Name="TryHarder" Grid.Column="1"  IsToggled="{Binding Path=ext_TryHarder}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="DelayBetweenAnalyzingFrames_Label" Grid.Column="0" Text="Delay between analyzing frames" TextColor="Gray"></Label>
+                                    <Entry x:Name="DelayBetweenAnalyzingFrames"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_DelayBetweenAnalyzingFrames}" Keyboard="Default"  Placeholder="150" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="InitialDelayBeforeAnalyzingFrames_Label" Grid.Column="0" Text="Initial Delay Before Analyzing Frames" TextColor="Gray"></Label>
+                                    <Entry x:Name="InitialDelayBeforeAnalyzingFrames"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_InitialDelayBeforeAnalyzingFrames}" Keyboard="Default"  Placeholder="300" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="DelayBetweenContinuousScans_Label" Grid.Column="0" Text="Delay Between Continuous Scans" TextColor="Gray"></Label>
+                                    <Entry x:Name="DelayBetweenContinuousScans"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_DelayBetweenContinuousScans}" Keyboard="Default"  Placeholder="1000" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="Autofocus_Label" Grid.Column="0" Text="Автофокус" TextColor="Gray"></Label>
+                                    <Switch x:Name="Autofocus" Grid.Column="1"  IsToggled="{Binding Path=ext_Autofocus}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="AutofocusDelay_Label" Grid.Column="0" Text="Длина цикла автофокуса (сек.)" TextColor="Gray"></Label>
+                                    <Entry x:Name="AutofocusDelay"  Grid.Column="1" TextColor="White" Text="{Binding Path=ext_AutofocusDelay}" Keyboard="Default"  Placeholder="2" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Виды штрихкодов" x:Name="TabSel_BarcodeFormats">
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_All_1D_Label" Grid.Column="0" Text="All_1D" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_All_1D" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_All_1D}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_AZTEC_Label" Grid.Column="0" Text="AZTEC" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_AZTEC" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_AZTEC}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_CODABAR_Label" Grid.Column="0" Text="CODABAR" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_CODABAR" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_CODABAR}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_EAN_8_Label" Grid.Column="0" Text="EAN_8" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_EAN_8" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_EAN_8}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_EAN_13_Label" Grid.Column="0" Text="EAN_13" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_EAN_13" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_EAN_13}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_CODE_128_Label" Grid.Column="0" Text="CODE_128" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_CODE_128" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_CODE_128}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_CODE_39_Label" Grid.Column="0" Text="CODE_39" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_CODE_39" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_CODE_39}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_CODE_93_Label" Grid.Column="0" Text="CODE_93" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_CODE_93" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_CODE_93}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_DATA_MATRIX_Label" Grid.Column="0" Text="DATA_MATRIX" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_DATA_MATRIX" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_DATA_MATRIX}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_IMB_Label" Grid.Column="0" Text="IMB" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_IMB" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_IMB}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_ITF_Label" Grid.Column="0" Text="ITF" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_ITF" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_ITF}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_MAXICODE_Label" Grid.Column="0" Text="MAXICODE" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_MAXICODE" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_MAXICODE}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_MSI_Label" Grid.Column="0" Text="MSI" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_MSI" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_MSI}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_PDF_417_Label" Grid.Column="0" Text="PDF_417" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_PDF_417" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_PDF_417}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_PLESSEY_Label" Grid.Column="0" Text="PLESSEY" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_PLESSEY" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_PLESSEY}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_QR_CODE_Label" Grid.Column="0" Text="QR_CODE" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_QR_CODE" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_QR_CODE}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_RSS_14_Label" Grid.Column="0" Text="RSS_14" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_RSS_14" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_RSS_14}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_RSS_EXPANDED_Label" Grid.Column="0" Text="RSS_EXPANDED" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_RSS_EXPANDED" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_RSS_EXPANDED}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_UPC_A_Label" Grid.Column="0" Text="UPC_A" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_UPC_A" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_UPC_A}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_UPC_E_Label" Grid.Column="0" Text="UPC_E" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_UPC_E" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_UPC_E}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="{DynamicResource Key=CommonPadding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="bc_format_UPC_EAN_EXTENSION_Label" Grid.Column="0" Text="UPC_EAN_EXTENSION" TextColor="Gray"></Label>
+                                    <Switch x:Name="bc_format_UPC_EAN_EXTENSION" Grid.Column="1"  IsToggled="{Binding Path=ext_bk_format_UPC_EAN_EXTENSION}"></Switch>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </TableSection>
+                
+                </TableRoot>
+            </TableView.Root>
+        </local:rendering_SettingsPageMain_TableView>
+    </StackLayout>
+</ContentPage>
